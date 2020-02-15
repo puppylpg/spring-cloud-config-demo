@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: pikachu
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka  ## 注册到 eureka
+  instance:
+    preferIpAddress: true
+
+---
+spring:
+  profiles: dev
+  cloud:
+    config:
+      # 使用eureka注册中心之后，将不再直接配置cloud config server的地址
+#      uri: http://localhost:8081
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
+      label: master
+      profile: dev
+
+---
+spring:
+  profiles: prod
+  cloud:
+    config:
+#      uri: http://localhost:8081
+      discovery:
+        enabled: true
+        service-id: spring-cloud-config-server
+      label: master
+      profile: prod

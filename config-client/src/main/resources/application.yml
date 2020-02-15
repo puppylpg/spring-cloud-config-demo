@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+# actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# default value to config
+pikachu:
+  name: no-name
+  color: no-color
+  gender: no-gender
+
+pikachu2:
+  name: no-name
+  color: no-color
+  gender: no-gender
