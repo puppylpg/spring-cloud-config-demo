@@ -1,7 +1,7 @@
 package cn.com.puppylpg.controller;
 
 import cn.com.puppylpg.entity.Pikachu;
-import cn.com.puppylpg.entity.Pikachu2;
+import cn.com.puppylpg.entity.PikachuChangeWhenAutoFresh;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ public class ShowPikachuController {
     Pikachu pikachu;
 
     @Autowired
-    Pikachu2 pikachu2;
+    PikachuChangeWhenAutoFresh pikachu2;
 
     @RequestMapping(value = "show")
     public Object show() {
