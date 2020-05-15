@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: hello-client
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        # no need to register client
+        register: false
+server:
+  port: 8081

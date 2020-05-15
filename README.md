@@ -1,19 +1,20 @@
-[toc]
+# spring-cloud-demo
+Demos about spring cloud.
 
-在注册中心eureka上注册spring cloud config server和client。client从server获取配置，并提供服务。
+## consul
+需要自己先起一个单独的consul服务（集群）。
+### 服务注册中心
+- consul-discovery-server：把自己注册到consul上；
+- consul-discovery-client：从consul上发现服务；
 
-# eureka
-由于是单点，自己不能注册自己。
+### 健康检查
+### 配置中心
+consul也可用作配置中心。但是貌似不方便持久化。
 
-# config-server
-- 配置git仓库地址，这里密码被我隐去了；
-- 配置eureka注册地址；
+TODO
 
-# config-client
-- 由于要从config server获取配置，所以要把config server的地址写在bootstrap.yml里；
-- 当然用了eureka之后，不再用`spring.cloud.config.uri`，而是`spring.cloud.config.discovery.service-id`，写下server的`spring.application.name`；
-- 所以eureka的配置地址也必须写在bootstrap.yml中；
+## spring-cloud-config
+注册中心。这里是使用的eureka作为注册中心。
 
-# Usage
-依次启动eureka、config-server、config-client。
-访问`http://localhost:8082/auto-show`或`http://localhost:8082/show`
+使用spring-cloud-config作为配置中心的好处是持久化，比如从git仓库中取配置。
+

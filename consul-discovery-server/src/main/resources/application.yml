@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: hello-server
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        enabled: true
+        # name for this service
+        service-name: ${spring.application.name}
+        # unique id for this service
+        instance-id: ${spring.application.name}:${random.value}
+        healthCheckPath: /hello-server-health-check
+        healthCheckInterval: 20s
+

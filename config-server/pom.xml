@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>cn.com.puppylpg</groupId>
-        <artifactId>spring-cloud-config-demo</artifactId>
+        <artifactId>spring-cloud-demo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     
