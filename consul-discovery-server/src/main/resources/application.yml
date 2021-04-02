@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   application:
     name: hello-server
@@ -10,7 +12,28 @@ spring:
         # name for this service
         service-name: ${spring.application.name}
         # unique id for this service
-        instance-id: ${spring.application.name}:${random.value}
-        healthCheckPath: /hello-server-health-check
-        healthCheckInterval: 20s
+        instance-id: ${spring.application.name}--${HOSTNAME:${random.value}}-${server.port}
+#        instance-id: ${spring.application.name}:${random.int}
+#        instance-id: ${spring.application.name}:${random.uuid}
+        register: true
+        health-check-critical-timeout: 1m
+        health-check-interval: 3s
+        health-check-path: /actuator/health
+        health-check-timeout: 10s
+        # ttl prefers to health check
+        heartbeat:
+          enabled: true
+          ttl-value: 3
+          heart
 
+# actuator
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    root: DEBUG
